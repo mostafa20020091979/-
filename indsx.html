@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 بطوط 💖</title>
+
+    <style>
+        * {margin:0;padding:0;box-sizing:border-box;}
+
+        body {
+            font-family: Arial;
+            background: linear-gradient(-45deg, #ff6b9d, #c44569, #f7931e, #ff9ff3);
+            background-size: 400% 400%;
+            animation: bg 15s infinite;
+            height:100vh;
+            overflow:hidden;
+        }
+
+        @keyframes bg {
+            0%{background-position:0%}
+            50%{background-position:100%}
+            100%{background-position:0%}
+        }
+
+        .container {
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            flex-direction:column;
+            text-align:center;
+            color:white;
+            z-index:10;
+            position:relative;
+        }
+
+        h1 {
+            font-size:3.5rem;
+            animation:pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%,100%{transform:scale(1)}
+            50%{transform:scale(1.1)}
+        }
+
+        .love-message {
+            margin:20px;
+            padding:20px 40px;
+            background:rgba(255,255,255,0.2);
+            border-radius:50px;
+            font-size:1.6rem;
+            transition:0.5s;
+        }
+
+        p {
+            font-size:1.3rem;
+            margin:10px;
+        }
+
+        .btn-love {
+            padding:15px 30px;
+            border:none;
+            border-radius:50px;
+            background:#ff4d88;
+            color:white;
+            font-size:1.2rem;
+            cursor:pointer;
+            animation:bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%,100%{transform:translateY(0)}
+            50%{transform:translateY(-10px)}
+        }
+
+        .heart {
+            position:absolute;
+            color:pink;
+            animation:float 6s linear;
+        }
+
+        @keyframes float {
+            from{transform:translateY(100vh)}
+            to{transform:translateY(-100px)}
+        }
+    </style>
+</head>
+
+<body>
+
+<audio id="loveSound" src="https://www.soundjay.com/buttons/sounds/button-3.mp3"></audio>
+
+<div class="container">
+
+    <h1>💖 يا قلبي إنتي 💖</h1>
+
+    <div class="love-message">
+        انا اسف يا قلبي انتي عارفه انا بحبك قد ايه وان انا مقدرش ابعد عنك ❤️<br>
+        انتي كل حاجة حلوة في حياتي وانا مش عايز اخسرك ابدا 💖
+        حبيتك في قلبي كبير قوي ومش عايز حد يلمسه غيرك يا قلبي 😘
+        متزعليش مني يا حبيبتي انا غلطت بس انا اسف جدا 💔 
+        بس بنام والله غصب عني فجأه كدا😅    
+        انتي عارفه اني بحبك ومش ممكن ابعد عنك❤️
+
+    </div>
+
+    <p> ❤️ انتي الحب كل❤️      </p>
+
+    <button class="btn-love" onclick="showSurprise()">
+        دوسي هنا بس خليكي مستعدة💝
+    </button>
+
+</div>
+
+<script>
+
+// اسمها
+const name = prompt("اكتبي اسمك يا مزه كده  😏💖");
+if(name){
+    document.querySelector("h1").innerHTML = `💖 ${name} 💖`;
+}
+
+// Full Screen
+document.body.onclick = () => {
+    if(!document.fullscreenElement){
+        document.documentElement.requestFullscreen();
+    }
+}
+
+// قلوب
+setInterval(()=>{
+    let h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="💖";
+    h.style.left=Math.random()*100+"%";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),6000);
+},500);
+
+// المفاجأة
+function showSurprise(){
+    document.getElementById("loveSound").play();
+
+    let msg=document.querySelector(".love-message");
+
+    msg.innerHTML=`
+    💍  انا بحبك وانا اسف يا قلبي والله اليومين الي فاتو دوول الدنيا مكنتش حلوا قوي💍<br>
+    💍  انا عارف اني غلطت في حقك وانا اسف جدا يا حبيبتي 💍<br>
+    💍  انا عايزك تبقي معايا طول عمري وانا هعمل كل حاجة عشان اسعدك 💍<br>
+    بحبك يا بطوط❤️😘
+    `;
+
+    msg.style.transform="scale(1.1)";
+    setTimeout(()=>msg.style.transform="scale(1)",500);
+
+    for(let i=0;i<15;i++){
+        setTimeout(()=>{
+            let f=document.createElement("div");
+            f.innerHTML="✨";
+            f.style.position="fixed";
+            f.style.left="50%";
+            f.style.top="50%";
+            document.body.appendChild(f);
+            setTimeout(()=>f.remove(),1000);
+        },i*100);
+    }
+}
+
+</script>
+
+</body>
+</html>
